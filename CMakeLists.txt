@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.13)
 
-set(SNITCH_SOFTWARE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/snitch/sw/)
+set(SNITCH_SOFTWARE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/snitch/sw/ CACHE PATH "Path to snitch/sw dir")
 list(APPEND CMAKE_MODULE_PATH ${SNITCH_SOFTWARE_DIR}/cmake)
 set(CMAKE_TOOLCHAIN_FILE toolchain-llvm CACHE STRING "Toolchain to use")
 
@@ -20,8 +20,8 @@ include(SnitchUtilities)
 add_compile_options(-O3 -g -ffunction-sections)
 
 # Build the runtime
-add_subdirectory(${SNITCH_SOFTWARE_DIR}snRuntime snRuntime)
-add_subdirectory(${SNITCH_SOFTWARE_DIR}benchmark benchmark)
+add_subdirectory(${SNITCH_SOFTWARE_DIR}/snRuntime snRuntime)
+add_subdirectory(${SNITCH_SOFTWARE_DIR}/benchmark benchmark)
 
 
 include_directories(${SNRUNTIME_INCLUDE_DIRS})
